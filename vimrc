@@ -2,10 +2,15 @@ set nocompatible
 filetype off
 
 set rnu
-set term=xterm
+set term=xterm-256color
 set t_Co=256
 let &t_AB="\e[48;5;%dm"
 let &t_AF="\e[38;5;%dm"
+
+set guifont=Inconsolata\ for\ Powerline:h15
+let g:Powerline_symbols = 'fancy'
+set fillchars+=stl:\ ,stlnc:\
+set termencoding=utf-8
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -51,7 +56,6 @@ call vundle#begin()
 call vundle#end()            " required
 filetype plugin indent on     " required!
 
-set guifont       = "Menlo:12"
 let g:colors_name = "badwolf"
 set background    = "dark"
 
@@ -290,7 +294,7 @@ set fileformats=unix,dos
 
 if !empty($CONEMUBUILD)
   set termencoding=utf8
-  set term=xterm
+  set term=xterm-256color
   set t_Co=256
   let &t_AB="\e[48;5;%dm"
   let &t_AF="\e[38;5;%dm"
