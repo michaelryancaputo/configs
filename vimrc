@@ -1,6 +1,7 @@
 set nocompatible
 filetype off
 
+set rnu
 set term=xterm
 set t_Co=256
 let &t_AB="\e[48;5;%dm"
