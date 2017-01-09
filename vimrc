@@ -1,12 +1,15 @@
 set nocompatible
 filetype off
 
+command! W  write
+
 set rnu
 set term=xterm-256color
 set t_Co=256
 let &t_AB="\e[48;5;%dm"
 let &t_AF="\e[38;5;%dm"
 
+set clipboard=unnamed
 set guifont=Inconsolata\ for\ Powerline:h15
 let g:Powerline_symbols = 'fancy'
 set fillchars+=stl:\ ,stlnc:\
@@ -99,8 +102,8 @@ let g:syntastic_check_on_wq = 0
 "Some tips from http://stevelosh.com/blog/2010/09/coming-home-to-vim/"
 
 set tabstop=2
-set softtabstop=2
-set shiftwidth=4
+set softtabstop=0
+set shiftwidth=2
 set expandtab
 
 set encoding=utf-8
