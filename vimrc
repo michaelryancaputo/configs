@@ -1,7 +1,8 @@
 set nocompatible
 filetype off
 
-command! W  write
+command! W write
+command! Q write
 
 set rnu
 set term=xterm-256color
@@ -17,48 +18,39 @@ set termencoding=utf-8
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+filetype plugin indent on
+
 " let Vundle manage Vundle
- " required!
- Plugin 'gmarik/Vundle.vim'
+" required!
 
- " My Plugins here:
- "
- " original repos on github
- Plugin 'tpope/vim-fugitive'
-" Plugin 'Lokaltog/vim-easymotion'
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim'}
-" Plugin 'tpope/vim-rails.git'
-" Plugin 'ack.vim'
+" My Plugins here:
+"
+" original repos on github
+Plugin 'tpope/vim-fugitive'
+Plugin 'sjl/badwolf'
+Plugin 'jacoborus/tender'
+Plugin 'whatyouhide/vim-gotham'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'bling/vim-airline'
+Plugin 'scrooloose/NERDTree'
+Plugin 'scrooloose/NERDCommenter'
+Plugin 'mxw/vim-jsx'
+" Plugin 'pangloss/vim-javascript'
+" Plugin 'bigfish/vim-js-context-coloring'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'othree/es.next.syntax.vim'
+Plugin 'elzr/vim-json'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'maxboisvert/vim-simple-complete'
 
- " themes
- Plugin 'sjl/badwolf'
- Plugin 'jacoborus/tender'
- Plugin 'whatyouhide/vim-gotham'
 
- Plugin 'plasticboy/vim-markdown'
- Plugin 'jtratner/vim-flavored-markdown'
- " Plugin 'groenewege/vim-less'
- Plugin 'editorconfig-vim'
- Plugin 'bling/vim-airline'
- " Plugin 'airblade/vim-gitgutter'
- Plugin 'kien/ctrlp.vim'
- " vim-scripts repos
- " Plugin 'L9'
- " Plugin 'FuzzyFinder'
- Plugin 'scrooloose/NERDTree'
- Plugin 'scrooloose/NERDCommenter'
- " Plugin 'scrooloose/syntastic'
- Plugin 'Tabular'
- Plugin 'pangloss/vim-javascript'
- " Plugin 'mxw/vim-jsx'
- Plugin 'jsx/jsx.vim'
- let g:jsx_ext_required = 0 " Allow JSX in normal JS files
- " Plugin 'leafgarland/typescript-vim'
- " Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()            " required
 filetype plugin indent on     " required!
+Bundle 'justinj/vim-react-snippets'
 
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+let g:NERDTreeWinPos = "right"
 let g:colors_name = "badwolf"
 set background    = "dark"
 
@@ -81,14 +73,8 @@ let g:CommandTWildIgnore = &wildignore . ",**/bower_components/*" . ",**/node_mo
 let g:CommandTMaxHeight = 30
 let g:CommandTMaxFiles = 500000
 
-" CtrlP settings
-"
-let g:ctrlp_map = '<leader>t'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard']  " Windows
-
 " Syntastic
-let g:syntastic_javascript_checkers = ['']
+let g:syntastic_javascript_checkers = ['eslint']
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -204,24 +190,24 @@ nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 
 augroup file_types
-    autocmd!
-    autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
-    autocmd BufRead,BufNewFile *.md set filetype=markdown
-    autocmd BufRead,BufNewFile *.txt set filetype=markdown
-    autocmd BufRead,BufNewFile *.module set filetype=php
-    autocmd BufRead,BufNewFile *.install set filetype=php
-    autocmd BufRead,BufNewFile *.test set filetype=php
-    autocmd BufRead,BufNewFile *.inc set filetype=php
-    autocmd BufRead,BufNewFile *.profile set filetype=php
-    autocmd BufRead,BufNewFile *.view set filetype=php
-    autocmd BufNewFile,BufRead *.less set filetype=less
-    autocmd BufRead,BufNewFile *.js set ft=javascript syntax=javascript
-    autocmd BufRead,BufNewFile *.ts set ft=typescript syntax=typescript
-    autocmd BufRead,BufNewFile *.es6 set ft=javascript syntax=javascript
-    autocmd BufRead,BufNewFile *.json set ft=json syntax=javascript
-    autocmd BufRead,BufNewFile *.twig set ft=htmldjango
-    autocmd BufRead,BufNewFile *.rabl set ft=ruby
-    autocmd BufRead,BufNewFile *.jade set ft=jade
+  autocmd!
+  autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufRead,BufNewFile *.txt set filetype=markdown
+  autocmd BufRead,BufNewFile *.module set filetype=php
+  autocmd BufRead,BufNewFile *.install set filetype=php
+  autocmd BufRead,BufNewFile *.test set filetype=php
+  autocmd BufRead,BufNewFile *.inc set filetype=php
+  autocmd BufRead,BufNewFile *.profile set filetype=php
+  autocmd BufRead,BufNewFile *.view set filetype=php
+  autocmd BufNewFile,BufRead *.less set filetype=less
+  autocmd BufRead,BufNewFile *.js set ft=javascript syntax=javascript
+  autocmd BufRead,BufNewFile *.ts set ft=typescript syntax=typescript
+  autocmd BufRead,BufNewFile *.es6 set ft=javascript syntax=javascript
+  autocmd BufRead,BufNewFile *.json set ft=json syntax=javascript
+  autocmd BufRead,BufNewFile *.twig set ft=htmldjango
+  autocmd BufRead,BufNewFile *.rabl set ft=ruby
+  autocmd BufRead,BufNewFile *.jade set ft=jade
 augroup END
 
 " Whitespace fixes
@@ -229,11 +215,11 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
 augroup whitespace
-    autocmd!
-    autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-    autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-    autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-    autocmd BufWinLeave * call clearmatches()
+  autocmd!
+  autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+  autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+  autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+  autocmd BufWinLeave * call clearmatches()
 augroup END
 
 set undolevels=20
@@ -288,47 +274,47 @@ set fileformats=unix,dos
 
 " Abbreviations
 "augroup abbreviations
-    "autocmd!
-    "autocmd FileType html :iabbrev <buffer> --- &mdash;
-    "autocmd FileType javascript :iabbrev <buffer> ret return
+  "autocmd!
+  "autocmd FileType html :iabbrev <buffer> --- &mdash;
+  "autocmd FileType javascript :iabbrev <buffer> ret return
 "augroup END
 "
 "ConEmu settings
 
 if !empty($CONEMUBUILD)
-  set termencoding=utf8
-  set term=xterm-256color
-  set t_Co=256
-  let &t_AB="\e[48;5;%dm"
-  let &t_AF="\e[38;5;%dm"
+set termencoding=utf8
+set term=xterm-256color
+set t_Co=256
+let &t_AB="\e[48;5;%dm"
+let &t_AF="\e[38;5;%dm"
 
-  " set codes for dynamic cursor type with vim modes
-  let &t_te="\e[0 q"
-  let &t_ti="\e[1 q"
-  let &t_EI="\e[1 q"
-  let &t_SI="\e[5 q"
-  let &t_SR="\e[3 q"
+" set codes for dynamic cursor type with vim modes
+let &t_te="\e[0 q"
+let &t_ti="\e[1 q"
+let &t_EI="\e[1 q"
+let &t_SI="\e[5 q"
+let &t_SR="\e[3 q"
 
-  " fix broken backspace
-  inoremap <Char-0x07F> <BS>
-  nnoremap <Char-0x07F> <BS>
+" fix broken backspace
+inoremap <Char-0x07F> <BS>
+nnoremap <Char-0x07F> <BS>
 
-  "scrollwheel
-  inoremap <Esc>[62~ <C-X><C-E>
-  inoremap <Esc>[63~ <C-X><C-Y>
-  nnoremap <Esc>[62~ <C-E>
-  nnoremap <Esc>[63~ <C-Y>
+"scrollwheel
+inoremap <Esc>[62~ <C-X><C-E>
+inoremap <Esc>[63~ <C-X><C-Y>
+nnoremap <Esc>[62~ <C-E>
+nnoremap <Esc>[63~ <C-Y>
 
-  "fancy airline stuff
-  if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-  endif
+"fancy airline stuff
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
 
 endif
 
 " Tender
 if (has("termguicolors"))
-  set termguicolors
+set termguicolors
 endif
 
 colorscheme gotham256
