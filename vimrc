@@ -189,6 +189,10 @@ let g:airline_theme = 'tender'
 nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 
+" Prettier config
+autocmd FileType javascript set formatprg=prettier\ --stdin
+autocmd BufWritePre *.js :normal gggqG
+
 augroup file_types
   autocmd!
   autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
