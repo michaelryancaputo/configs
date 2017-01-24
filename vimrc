@@ -42,7 +42,7 @@ Plugin 'othree/es.next.syntax.vim'
 Plugin 'elzr/vim-json'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'maxboisvert/vim-simple-complete'
-
+Plugin 'vim-syntastic/syntastic'
 
 
 call vundle#end()            " required
@@ -107,7 +107,7 @@ set laststatus=2
 set number
 set cursorline
 
-let mapleader = ","
+" let mapleader = ""
 
 "Folding
 " set foldenable    " disable folding
