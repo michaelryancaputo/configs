@@ -122,7 +122,8 @@ jspm_packages
 .env
 .envrc
 
-
+# other stuff
+.vscode
 node_modules/
 build/
 bower_components/
