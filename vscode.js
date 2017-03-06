@@ -1,5 +1,5 @@
 {
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 1,
     "editor.fontFamily": "'Monoid', Fira Code",
     "editor.fontLigatures": true,
     "editor.fontSize": 12,
@@ -11,7 +11,7 @@
     "editor.formatOnType": false,
     "editor.formatOnPaste": false,
     "prettier.singleQuote": true,
-    "prettier.trailingComma": true,
+    "prettier.trailingComma": "es5",
     "prettier.bracketSpacing": true,
     "prettier.printWidth": 120,
     "workbench.sideBar.location": "right",
