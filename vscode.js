@@ -1,5 +1,5 @@
 {
-    "window.zoomLevel": 1,
+    "window.zoomLevel": -1,
     "editor.fontFamily": "'Monoid', Fira Code",
     "editor.fontLigatures": true,
     "editor.fontSize": 12,
@@ -11,9 +11,12 @@
     "editor.formatOnType": false,
     "editor.formatOnPaste": false,
     "prettier.singleQuote": true,
-    "prettier.trailingComma": "es5",
+    "prettier.trailingComma": "all",
     "prettier.bracketSpacing": true,
     "prettier.printWidth": 120,
     "workbench.sideBar.location": "right",
-    "workbench.iconTheme": "vs-minimal"
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "OceanDeep",
+    "vsicons.dontShowNewVersionMessage": true,
+    "javascript.validate.enable": false
 }
