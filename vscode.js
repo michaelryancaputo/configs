@@ -1,5 +1,5 @@
 {
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
   "editor.fontFamily": "'Monoid', Fira Code",
   "editor.fontLigatures": true,
   "editor.fontSize": 12,
@@ -28,11 +28,12 @@
   "editor.renderIndentGuides": true,
   "editor.minimap.enabled": false,
   "editor.tabSize": 2,
+  "editor.snippetSuggestions": "top",
   "sync.gist": "d3c2071e4e848ad210f4ac75f73694d0",
-  "sync.lastUpload": "",
+  "sync.lastUpload": "2017-09-11T23:14:23.338Z",
   "sync.autoDownload": false,
   "sync.autoUpload": false,
-  "sync.lastDownload": "2017-08-31T14:26:31.040Z",
+  "sync.lastDownload": "2017-09-12T21:51:21.426Z",
   "sync.forceDownload": false,
   "sync.anonymousGist": false,
   "sync.host": "",
@@ -42,5 +43,6 @@
   "terminal.integrated.fontFamily": "'Source Code Pro for Powerline'",
   "terminal.integrated.setLocaleVariables": false,
   "terminal.integrated.fontLigatures": true,
-  "terminal.integrated.fontSize": 10
+  "terminal.integrated.fontSize": 10,
+  "workbench.colorTheme": "Cobalt2"
 }
